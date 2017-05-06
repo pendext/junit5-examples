@@ -1,6 +1,7 @@
 package com.pendext.junit.collections;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ArrayListTest {
@@ -10,6 +11,21 @@ public class ArrayListTest {
         ArrayList<String> listOne = new ArrayList<>();
         ArrayList<String> listTwo = new ArrayList<>();
         assertEquals(listOne.size(), listTwo.size());
+    }
+
+    @Test
+    public void addingAnItemWorks() {
+        ArrayList<String> list = new ArrayList<>();
+        list.add("one");
+        assertEquals(1, list.size());
+    }
+
+    @Test
+    @DisplayName("Adding one item to an array list should increment the size of the list.")
+    public void addingAnItemWorksWithDisplayName() {
+        ArrayList<String> list = new ArrayList<>();
+        list.add("one");
+        assertEquals(1, list.size());
     }
 
 }

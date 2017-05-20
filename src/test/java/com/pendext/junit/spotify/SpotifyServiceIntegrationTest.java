@@ -21,6 +21,7 @@ public class SpotifyServiceIntegrationTest {
     public void spotifyServiceCanRetrieveInformationFromSpotify() throws IOException {
         ArtistInfo artistInfo = spotifyService.getArtistInfo("5CWbfANRpZbnxdstzcNg5H");
         assertEquals(artistInfo.getName(), "Bill Monroe");
+        assertEquals(artistInfo.getType(), "artist");
     }
 
 }

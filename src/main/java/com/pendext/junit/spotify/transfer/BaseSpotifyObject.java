@@ -1,29 +1,29 @@
-package com.pendext.junit.spotify;
+package com.pendext.junit.spotify.transfer;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
-import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ArtistInfo {
+public class BaseSpotifyObject {
+
     private String name;
     private int popularity;
     private String type;
     private String href;
-    private List<String> genres;
 
-    public ArtistInfo() {}
+    protected ObjectMapper mapper = new ObjectMapper();
 
-    public ArtistInfo(String json) throws IOException {
+    public BaseSpotifyObject() {}
+
+    public BaseSpotifyObject(String json, Class clazz) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        ArtistInfo artistInfo = mapper.readValue(json, ArtistInfo.class);
-        this.setGenres(artistInfo.getGenres());
-        this.setHref(artistInfo.getHref());
-        this.setName(artistInfo.getName());
-        this.setType(artistInfo.getType());
-        this.setPopularity(artistInfo.getPopularity());
+        BaseSpotifyObject mappedObject = (BaseSpotifyObject) mapper.readValue(json, clazz);
+        this.setHref(mappedObject.getHref());
+        this.setName(mappedObject.getName());
+        this.setType(mappedObject.getType());
+        this.setPopularity(mappedObject.getPopularity());
     }
 
     public String getName() {
@@ -57,14 +57,4 @@ public class ArtistInfo {
     public void setHref(String href) {
         this.href = href;
     }
-
-    public List<String> getGenres() {
-        return genres;
-    }
-
-    public void setGenres(List<String> genres) {
-        this.genres = genres;
-    }
-
 }
-

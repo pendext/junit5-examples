@@ -1,12 +1,13 @@
 package com.pendext.junit.spotify;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import com.pendext.junit.annotations.NetworkIntegrationTest;
 import org.junit.jupiter.api.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.IOException;
 
-@Tag("integration")
-@Tag("requires network")
+@NetworkIntegrationTest
 public class SpotifyServiceIntegrationTest {
 
     private static SpotifyService spotifyService;

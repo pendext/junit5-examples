@@ -1,4 +1,4 @@
-package com.pendext.junit.collections.spotify;
+package com.pendext.junit.spotify;
 
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.IOException;
 
 @Tag("integration")
+@Tag("requires network")
 public class SpotifyRestClientIntegrationTest {
 
     private static SpotifyRestClient spotifyRestClient;

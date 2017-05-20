@@ -1,4 +1,4 @@
-package com.pendext.junit.collections.spotify;
+package com.pendext.junit.spotify;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;

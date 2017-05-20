@@ -1,4 +1,4 @@
-package com.pendext.junit.collections.spotify;
+package com.pendext.junit.spotify;
 
 import okhttp3.*;
 import org.apache.commons.io.IOUtils;
@@ -19,5 +19,5 @@ public class SpotifyRestClient {
         String responseJson = IOUtils.toString(response.body().bytes(), "UTF-8");
         return new ArtistInfo().fromJSON(responseJson);
     }
-    
+
 }

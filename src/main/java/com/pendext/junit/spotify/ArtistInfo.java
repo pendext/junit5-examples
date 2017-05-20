@@ -14,6 +14,18 @@ public class ArtistInfo {
     private String href;
     private List<String> genres;
 
+    public ArtistInfo() {}
+
+    public ArtistInfo(String json) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        ArtistInfo artistInfo = mapper.readValue(json, ArtistInfo.class);
+        this.setGenres(artistInfo.getGenres());
+        this.setHref(artistInfo.getHref());
+        this.setName(artistInfo.getName());
+        this.setType(artistInfo.getType());
+        this.setPopularity(artistInfo.getPopularity());
+    }
+
     public String getName() {
         return name;
     }
@@ -52,11 +64,6 @@ public class ArtistInfo {
 
     public void setGenres(List<String> genres) {
         this.genres = genres;
-    }
-
-    public ArtistInfo fromJSON(String json) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(json, ArtistInfo.class);
     }
 
 }

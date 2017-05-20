@@ -7,19 +7,20 @@ import java.io.IOException;
 
 @Tag("integration")
 @Tag("requires network")
-public class SpotifyRestClientIntegrationTest {
+public class SpotifyServiceIntegrationTest {
 
-    private static SpotifyRestClient spotifyRestClient;
+    private static SpotifyService spotifyService;
 
     @BeforeAll
     public static void beforeAll() {
-        spotifyRestClient = new SpotifyRestClient();
+        spotifyService = new SpotifyService();
     }
 
     @Test
     @DisplayName("Rest client can retrieve information from Spotify.")
-    public void restClientCanRetrieveInformationFromSpotify() throws IOException {
-        ArtistInfo artistInfo = spotifyRestClient.getArtistInfo("5CWbfANRpZbnxdstzcNg5H");
+    public void spotifyServiceCanRetrieveInformationFromSpotify() throws IOException {
+        ArtistInfo artistInfo = spotifyService.getArtistInfo("5CWbfANRpZbnxdstzcNg5H");
         assertEquals(artistInfo.getName(), "Bill Monroe");
     }
+
 }

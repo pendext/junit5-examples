@@ -16,8 +16,13 @@ public class SpotifyServiceIntegrationTest {
     private static final String BILL_MONROE_ARTIST_ID = "5CWbfANRpZbnxdstzcNg5H";
 
     @BeforeAll
-    public static void beforeAll() {
+    public static void beforeAll(TestInfo testInfo) {
         spotifyService = new SpotifyService();
+    }
+
+    @BeforeEach
+    public void beforeEach(TestInfo testInfo) {
+        testInfo.getDisplayName();
     }
 
     @Test
@@ -60,6 +65,7 @@ public class SpotifyServiceIntegrationTest {
                 () -> assertEquals("Man of Constant Sorrow", tracks.get(2).getName(), "The track name was not what was expected."),
                 () -> assertEquals("Pancho and Lefty", tracks.get(3).getName(), "The track name was not what was expected."));
     }
+
 
 
 }

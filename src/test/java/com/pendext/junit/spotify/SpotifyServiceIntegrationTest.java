@@ -66,6 +66,12 @@ public class SpotifyServiceIntegrationTest {
                 () -> assertEquals("Pancho and Lefty", tracks.get(3).getName(), "The track name was not what was expected."));
     }
 
-
+    @Test
+    @RepeatedTest(value = 10, name = "{currentRepetition} / {totalRepetitions}")
+    @DisplayName("Repeat!")
+    public void repeatedTestExample(TestInfo testInfo, RepetitionInfo repetitionInfo) {
+        assertEquals(testInfo.getDisplayName(),
+                "Repeat! " + repetitionInfo.getCurrentRepetition() + " / " + repetitionInfo.getTotalRepetitions());
+    }
 
 }

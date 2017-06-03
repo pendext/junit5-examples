@@ -12,6 +12,7 @@ public class RestClient {
     public String get(String url) throws IOException {
         Request request = new Request.Builder()
                 .url(url)
+                .addHeader("Authorization", "Bearer ")
                 .build();
 
         Response response = client.newCall(request).execute();

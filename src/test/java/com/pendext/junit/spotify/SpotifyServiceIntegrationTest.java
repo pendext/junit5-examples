@@ -5,11 +5,15 @@ import static org.junit.jupiter.api.Assertions.*;
 import com.pendext.junit.annotations.NetworkIntegrationTest;
 import com.pendext.junit.spotify.transfer.*;
 import org.junit.jupiter.api.*;
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.runner.RunWith;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @NetworkIntegrationTest
+@RunWith(JUnitPlatform.class)
 public class SpotifyServiceIntegrationTest {
 
     private static SpotifyService spotifyService;
@@ -67,11 +71,26 @@ public class SpotifyServiceIntegrationTest {
     }
 
     @Test
+    @DisplayName("Spotify service returns expected top tracks - using assertAll")
+    public void spotifyServiceReturnsExpectedTopTracksShowingTestReporter(TestReporter testReporter) throws IOException {
+        testReporter.publishEntry("start time", String.valueOf(LocalDateTime.now()));
+        TopTracksList topTracksList = spotifyService.getTopTracksList(BILL_MONROE_ARTIST_ID);
+        List<Track> tracks = topTracksList.getTracks();
+
+        assertAll("Top tracks returned from Spotify are exactly the tracks expected.",
+                () -> assertEquals("Uncle Pen", tracks.get(0).getName(), "The track name was not what was expected."),
+                () -> assertEquals("Southern Flavor", tracks.get(1).getName(), "The track name was not what was expected."),
+                () -> assertEquals("Man of Constant Sorrow", tracks.get(2).getName(), "The track name was not what was expected."),
+                () -> assertEquals("Pancho and Lefty", tracks.get(3).getName(), "The track name was not what was expected."));
+
+    }
+
+    @Test
     @RepeatedTest(value = 10, name = "{currentRepetition} / {totalRepetitions}")
     @DisplayName("Repeat!")
     public void repeatedTestExample(TestInfo testInfo, RepetitionInfo repetitionInfo) {
         assertEquals(testInfo.getDisplayName(),
-                "Repeat! " + repetitionInfo.getCurrentRepetition() + " / " + repetitionInfo.getTotalRepetitions());
+                 repetitionInfo.getCurrentRepetition() + " / " + repetitionInfo.getTotalRepetitions());
     }
 
 }

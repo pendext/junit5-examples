@@ -1,6 +1,7 @@
 package com.pendext.junit.spotify.transfer;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.apache.commons.lang3.builder.EqualsBuilder;
 
 import java.io.IOException;
 import java.util.List;
@@ -23,6 +24,19 @@ public class ArtistInfo extends BaseSpotifyObject {
 
     public void setGenres(List<String> genres) {
         this.genres = genres;
+    }
+
+    @Override
+    public boolean equals(Object otherArtistInfo) {
+        ArtistInfo other = (ArtistInfo) otherArtistInfo;
+        if (otherArtistInfo == null) {
+            return false;
+        }
+        return new EqualsBuilder()
+                .append(this.getHref(), other.getHref())
+                .append(this.getName(), other.getName())
+                .append(this.getPopularity(), other.getPopularity())
+                .isEquals();
     }
 
 }

@@ -1,7 +1,6 @@
 package com.pendext.junit.util;
 
-import static org.junit.gen5.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 

@@ -7,6 +7,6 @@ import java.lang.annotation.*;
 @Target({ ElementType.TYPE, ElementType.METHOD })
 @Retention(RetentionPolicy.RUNTIME)
 @IntegrationTest
-@Tag("requires network")
+@Tag("requiresNetwork")
 public @interface NetworkIntegrationTest {
 }

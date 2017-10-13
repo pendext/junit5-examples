@@ -1,9 +1,11 @@
 package com.pendext.junit.collections;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@TestInstance(Lifecycle.PER_METHOD)
 public class ArrayListTest {
 
     @Test
